@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Stress Aware Analytic at Workplace System</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Stress Aware Analytics at Workplace</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="index.html"><i class="fa fa-table fa-fw"></i> Dashboard </a>
+                    </li>
+                    <li>
+                        <a href="questionnaire.html"><i class="fa fa-edit fa-fw"></i> Questionnaire </a>
+                    </li>
+                    <li>
+                        <a href="login.html"><i class="fa fa-gear fa-fw"></i> New Location and Parameters</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Stress Aware Analytic at Workplace</h1>
+
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Add New Location
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label>New Location</label>
+                                    <input id="new_loc" class="form-control">
+                                    <p class="help-block">Please enter just the name of location.</p>
+                                </div>
+                                <button id="loc_submit" type="submit" class="btn btn-default">Submit</button>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Parameters of Model (Temporal-causal Networks Parameters)
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+
+                                <div class="form-group">
+                                    <label>∆t Value</label>
+                                    <select id="dat_para" class="form-control">
+                                        <option>0.1</option>
+                                        <option>0.2</option>
+                                        <option>0.3</option>
+                                        <option>0.4</option>
+                                        <option>0.5</option>
+                                        <option>0.6</option>
+                                        <option>0.7</option>
+                                        <option>0.8</option>
+                                        <option>0.9</option>
+                                    </select>
+                                    <p class="help-block">The value currently is <label id="dat_currently" class="control-label" for="inputError"></label></p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Speed Factor of Active Job Long Term Value </label>
+                                    <select id="nLa_para" class="form-control">
+                                        <option>0.1</option>
+                                        <option>0.2</option>
+                                        <option>0.3</option>
+                                        <option>0.4</option>
+                                        <option>0.5</option>
+                                        <option>0.6</option>
+                                        <option>0.7</option>
+                                        <option>0.8</option>
+                                        <option>0.9</option>
+                                    </select>
+                                    <p class="help-block">The value currently is <label id="nLa_currently" class="control-label" for="inputError"></label></p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Speed Factor of Passive Job Long Term Value </label>
+                                    <select id="nLp_para" class="form-control">
+                                        <option>0.1</option>
+                                        <option>0.2</option>
+                                        <option>0.3</option>
+                                        <option>0.4</option>
+                                        <option>0.5</option>
+                                        <option>0.6</option>
+                                        <option>0.7</option>
+                                        <option>0.8</option>
+                                        <option>0.9</option>
+                                    </select>
+                                    <p class="help-block">The value currently is <label id="nLp_currently" class="control-label" for="inputError"></label></p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Speed Factor of Stress Long Term Value </label>
+                                    <select id="nLs_para" class="form-control">
+                                        <option>0.1</option>
+                                        <option>0.2</option>
+                                        <option>0.3</option>
+                                        <option>0.4</option>
+                                        <option>0.5</option>
+                                        <option>0.6</option>
+                                        <option>0.7</option>
+                                        <option>0.8</option>
+                                        <option>0.9</option>
+                                    </select>
+                                    <p class="help-block">The value currently is <label id="nLs_currently" class="control-label" for="inputError"></label></p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Speed Factor of Overload Job Long Term Value </label>
+                                    <select id="nLv_para" class="form-control">
+                                        <option>0.1</option>
+                                        <option>0.2</option>
+                                        <option>0.3</option>
+                                        <option>0.4</option>
+                                        <option>0.5</option>
+                                        <option>0.6</option>
+                                        <option>0.7</option>
+                                        <option>0.8</option>
+                                        <option>0.9</option>
+                                    </select>
+                                    <p class="help-block">The value currently is <label id="nLv_currently" class="control-label" for="inputError"></label></p>
+                                </div>
+
+                                <button id="para_submit" type="submit" class="btn btn-default">Edit Parameters</button>
+
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
+
+
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- Main APP -->
+<!-- IO -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="main.js"></script>
+
+<!-- jQuery -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+<!-- Flot Charts JavaScript -->
+<script src="../vendor/flot/excanvas.min.js"></script>
+<script src="../vendor/flot/jquery.flot.js"></script>
+<script src="../vendor/flot/jquery.flot.pie.js"></script>
+<script src="../vendor/flot/jquery.flot.resize.js"></script>
+<script src="../vendor/flot/jquery.flot.time.js"></script>
+<script src="../vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+
+
+
+<script type="text/javascript">
+
+</script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../dist/js/sb-admin-2.js"></script>
+
+
+</body>
+
+</html>

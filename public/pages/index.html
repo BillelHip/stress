@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Stress Aware Analytic at Workplace System</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Stress Aware Analytics at Workplace</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="index.html"><i class="fa fa-table fa-fw"></i> Dashboard </a>
+                    </li>
+                    <li>
+                        <a href="questionnaire.html"><i class="fa fa-edit fa-fw"></i> Questionnaire </a>
+                    </li>
+                    <li>
+                        <a href="login.html"><i class="fa fa-gear fa-fw"></i> New Location and Parameters</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Stress Aware Analytic at Workplace</h1>
+
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Agent
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <label>Agents are online (Doing Questionnaire)</label>
+                                <p class="text-success" id="online-agent"></p>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Based on Location
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label>Location:</label>
+                                    <select id="loc_id" class="form-control">
+                                    </select>
+
+                                </div>
+                                <button id="show_stress" type="submit" class="btn btn-default">Show</button>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
+                    <!-- =================================================================================== -->
+
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div id="name-based-on_loc" class="panel-heading">
+
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="flot-pie-chart-based-on_loc"></div>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                The Organizational Stress and Social Support
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+
+                                <div class="form-group">
+                                    <label>Organizational Stress Depend on </label>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios1_max_stressed" value="option1" checked> The Highest Agent Stressed
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2_min_stressed" value="option2"> The Lowest Agent Stressed
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="flot-line-chart"></div>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Stress Level
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="flot-line-chart-moving-stress"></div>
+                                </div>
+
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Active Level
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="flot-line-chart-moving-active"></div>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                3D Surface Plot of Stress at Workplace
+                            </div>
+                            <!-- /.panel-heading -->
+                            <center><div id="myDiv_plot" ></div></center>
+
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
+                    <!-- ============================================================================================= -->
+
+
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+<!-- Flot Charts JavaScript -->
+<script src="../vendor/flot/excanvas.min.js"></script>
+<script src="../vendor/flot/jquery.flot.js"></script>
+<script src="../vendor/flot/jquery.flot.pie.js"></script>
+<script src="../vendor/flot/jquery.flot.resize.js"></script>
+<script src="../vendor/flot/jquery.flot.time.js"></script>
+<script src="../vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+
+<!-- IO -->
+<script src="/socket.io/socket.io.js"></script>
+
+<script type="text/javascript">
+    //Flot Pie Chart
+    //var fs = require('fs');
+    //var data_temp = JSON.parse(fs.readFileSync('../../temp_file.json'));
+
+    var data_temp;
+
+    $(function() {
+        var socket = io();
+        var Im_new_agent = 0;
+
+
+        jQuery(window).ready(function () {
+            //console.log(""+window.location.pathname);
+            if(window.location.pathname == "/pages/index.html") {
+                //console.log("enter"+window.location);
+                //Temporals_node
+                //socket.emit('Temporals_node',"");
+
+                //update_loc_for_spinners
+                Im_new_agent = 1;
+                socket.emit('get_locations_name');
+
+                $('#optionsRadios1_max_stressed').prop("checked", true);
+
+                socket.emit("update_value_nodes");
+
+                /*
+                // initial data..
+                z1 = [
+                    [8.83,8.89,8.81,8.87,8.9,8.87],
+                    [8.89,8.94,8.85,8.94,8.96,8.92],
+                    [8.84,8.9,8.82,8.92,8.93,8.91],
+                    [8.79,8.85,8.79,8.9,8.94,8.92],
+                    [8.79,8.88,8.81,8.9,8.95,8.92],
+                    [8.8,8.82,8.78,8.91,8.94,8.92],
+                    [8.75,8.78,8.77,8.91,8.95,8.92],
+                    [8.8,8.8,8.77,8.91,8.95,8.94],
+                    [8.74,8.81,8.76,8.93,8.98,8.99],
+                    [8.89,8.99,8.92,9.1,9.13,9.11],
+                    [8.97,8.97,8.91,9.09,9.11,9.11],
+                    [9.04,9.08,9.05,9.25,9.28,9.27],
+                    [9,9.01,9,9.2,9.23,9.2],
+                    [8.99,8.99,8.98,9.18,9.2,9.19],
+                    [8.93,8.97,8.97,9.18,9.2,9.18]
+                ];
+
+                function unpack(rows, key) {
+                    return rows.map(
+                            function(row)
+                            {
+                                return row[key];
+                            }
+                    );
+                }
+
+                var z_data=[];
+                for(var i=0;i<15;i++)
+                {
+                    z_data.push(unpack(z1,i));
+                    //console.log(z_data[i]+"");
+                }
+
+                var data = [{
+                    z: z_data,
+                    type: 'surface'
+                }];
+
+                var layout = {
+                    title: '3D Surface Plot of Stress at Workplace',
+                    autosize: true,
+                    width: 500,
+                    height: 500,
+                    margin: {
+                        l: 65,
+                        r: 50,
+                        b: 65,
+                        t: 90
+                    }
+                };
+
+                Plotly.newPlot('myDiv_plot', data, layout);
+                */
+
+            }
+            //console.log("The page para loaded");
+        });
+
+        $('#optionsRadios1_max_stressed').click(function () {
+            //alert($('input[name=radioName]:checked', '#myForm').val());
+            //console.log('optionsRadios1_min_stressed');
+
+            OS[0] = 0.1;
+            Scnew[0] = oldSc[max_stress_agent];
+            for(var t = 1 ; t < 100 ; t++){
+                OS[t] = OS[t-1] + 0.3 * (avgLs_OS - OS[t-1]) * (1-OS[t-1]) * OS[t-1] * 0.9;
+                Scnew[t] = oldSc[max_stress_agent] * (1 - (0.5 * OS[t]));
+                //console.log(t + " OS :"+ OS[t-1] + ", Scnew:" + Scnew[t-1]);
+            }
+
+            var sin = [],
+                cos = [];
+            for (var i = 0; i < 100; i ++) {
+                sin.push([i, OS[i]]);
+                cos.push([i, Scnew[i]]);
+            }
+            var options = {
+                series: {
+                    lines: {
+                        show: true
+                    },
+                    points: {
+                        show: true
+                    }
+                },
+                grid: {
+                    hoverable: true //IMPORTANT! this is needed for tooltip to work
+                },
+                yaxis: {
+                    min: 0,
+                    max: 1
+                },
+                xaxis:{
+                    min: 0,
+                    max: 100
+                },
+                tooltip: true,
+                tooltipOpts: {
+                    content: "'%s' of %x.1 is %y.4",
+                    shifts: {
+                        x: -60,
+                        y: 25
+                    }
+                }
+            };
+
+            var plotObj2 = $.plot($("#flot-line-chart"), [{
+                    data: sin,
+                    label: "Organizational Stress"
+                }, {
+                    data: cos,
+                    label: "Social Support"
+                }],
+                options);
+        });
+
+        $('#optionsRadios2_min_stressed').click(function () {
+            //alert($('input[name=radioName]:checked', '#myForm').val());
+            //console.log('optionsRadios2_min_stressed');
+
+            OS[0] = 0.1;
+            Scnew[0] = oldSc[min_stress_agent];
+            for(var t = 1 ; t < 100 ; t++){
+                OS[t] = OS[t-1] + 0.3 * (avgLs_OS - OS[t-1]) * (1-OS[t-1]) * OS[t-1] * 0.9;
+                Scnew[t] = oldSc[min_stress_agent] * (1 - (0.5 * OS[t]));
+                //console.log(t + " OS :"+ OS[t-1] + ", Scnew:" + Scnew[t-1]);
+            }
+
+            var sin = [],
+                cos = [];
+            for (var i = 0; i < 100; i ++) {
+                sin.push([i, OS[i]]);
+                cos.push([i, Scnew[i]]);
+            }
+            var options = {
+                series: {
+                    lines: {
+                        show: true
+                    },
+                    points: {
+                        show: true
+                    }
+                },
+                grid: {
+                    hoverable: true //IMPORTANT! this is needed for tooltip to work
+                },
+                yaxis: {
+                    min: 0,
+                    max: 1
+                },
+                xaxis:{
+                    min: 0,
+                    max: 100
+                },
+                tooltip: true,
+                tooltipOpts: {
+                    content: "'%s' of %x.1 is %y.4",
+                    shifts: {
+                        x: -60,
+                        y: 25
+                    }
+                }
+            };
+
+            var plotObj2 = $.plot($("#flot-line-chart"), [{
+                    data: sin,
+                    label: "Organizational Stress"
+                }, {
+                    data: cos,
+                    label: "Social Support"
+                }],
+                options);
+
+        });
+
+        var OS = [], Scnew = [];
+        var max_stress_agent, min_stress_agent;
+        var avgLs_OS;
+        var oldSc = [];
+        var AVG_LS_ARRAY = [];
+        var AVG_LA_ARRAY = [];
+        $('#show_stress').click(function() {
+
+            var loc_id = $('#loc_id').val();
+
+            $('#name-based-on_loc').text('Location '+loc_id);
+
+            $.getJSON("temp_file.json", function(data) {
+                //console.log( "success" );
+                //console.log(data);
+                data_temp = data;
+            })
+                .done(function() {
+                    //console.log( "second success" );
+                    //console.log(data_temp);
+                })
+                .fail(function() {
+                    //console.log( "error" );
+                })
+                .always(function() {
+
+                    //console.log( "complete" );
+                    //console.log(data_temp);
+                    //socket.emit('Temporals_node',"");
+
+                    // ==================== Get Avg
+                    var avg_la = [],avg_lp = [],avg_lv = [],avg_ls = [];
+                    var obj_all = data_temp;
+                    var main_obj_all = obj_all;
+                    var loc_i = 0;
+
+                    // Var for analysis part
+                    var OS_Ls = [];
+                    //var oldSc = [];
+
+                    // For History Stress and Active
+                    AVG_LS_ARRAY = [];
+                    AVG_LA_ARRAY = [];
+
+                    //For insilt 3D plot
+                    iAgent = 1;
+                    OneByOneAgent = [];
+
+                    for (var main_key in main_obj_all) {
+                        if (main_obj_all.hasOwnProperty(main_key)) {
+                            obj_all_ = main_obj_all[main_key];
+                            for (var key_ in obj_all_) {
+                                if (obj_all_.hasOwnProperty(key_)) {
+                                    //console.log(key_ + " = "+ loc_id);
+                                    if (key_ == loc_id){
+                                        length_array = obj_all_[key_].length;
+                                        //console.log(key_ + " length -> " + obj_all_[key_].length);
+                                        if (length_array > 0) {
+                                            // AVG La============================================
+                                            var sum = 0;
+                                            //console.log(key_ + " -> " + obj_all_[key_][loc_i].La);
+                                            for (var i = 0; i < length_array; i++) {
+                                                sum += obj_all_[key_][i].La; //don't forget to add the base
+
+                                                // For history active level
+                                                var avg_hiy = sum / (i+1);
+                                                AVG_LA_ARRAY[i] = avg_hiy;
+
+                                            }
+                                            var avg = sum / length_array;
+                                            avg_la[loc_i] = avg;
+                                            //console.log('loc' + loc_i + 'La avg: ' + avg);
+
+                                            // AVG Lp=============================================
+                                            sum = 0;
+                                            for (var i = 0; i < length_array; i++) {
+                                                sum += obj_all_[key_][i].Lp; //don't forget to add the base
+                                            }
+                                            avg = sum / length_array;
+                                            avg_lp[loc_i] = avg;
+                                            //console.log('loc' + loc_i + 'Lp avg: ' + avg);
+
+                                            // AVG Lv==============================================
+                                            sum = 0;
+                                            for (var i = 0; i < length_array; i++) {
+                                                sum += obj_all_[key_][i].Lv; //don't forget to add the base
+                                            }
+                                            avg = sum / length_array;
+                                            avg_lv[loc_i] = avg;
+                                            //console.log('loc' + loc_i + 'Lv avg: ' + avg);
+
+                                            // AVG Ls=============================================
+                                            sum = 0;
+                                            for (var i = 0; i < length_array; i++) {
+                                                sum += obj_all_[key_][i].Ls; //don't forget to add the base
+
+                                                // For Analysis part
+                                                OS_Ls[i] = obj_all_[key_][i].Ls;
+                                                oldSc[i] = obj_all_[key_][i].Sc;
+                                                //console.log(i+' loc ---- HERE ' + oldSc[i]);
+
+                                                // For History Part
+                                                var avg_hiy = sum / (i+1);
+                                                AVG_LS_ARRAY[i] = avg_hiy;
+
+                                                //For 3D plot
+                                                ex = obj_all_[key_][i].Ex;
+                                                er = obj_all_[key_][i].Er;
+                                                sc = obj_all_[key_][i].Sc;
+                                                py = obj_all_[key_][i].Py;
+                                                tp = obj_all_[key_][i].Tp;
+                                                ab = obj_all_[key_][i].Ab;
+                                                jl = obj_all_[key_][i].Jl;
+                                                calculation();
+
+
+                                            }
+                                            avg = sum / length_array;
+                                            avg_ls[loc_i] = avg;
+                                            //console.log('loc' + loc_i + 'Ls avg: ' + avg);
+
+                                        } else if (length_array == 0) {
+                                            avg_la[loc_i] = 0.1;
+                                            avg_lp[loc_i] = 0.1;
+                                            avg_lv[loc_i] = 0.1;
+                                            avg_ls[loc_i] = 0.1;
+
+                                            OS_Ls = [0];
+                                            AVG_LS_ARRAY = [0];
+                                            AVG_LA_ARRAY = [0];
+                                        }
+                                        loc_i++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // For 3D plot
+
+                    function unpack(rows, key) {
+                        return rows.map(
+                            function(row)
+                            {
+                                return row[key];
+                            }
+                        );
+                    }
+
+                    var z_data=[];
+                    for(var i=0;i<1000;i++) {
+
+                        z_data.push(unpack(OneByOneAgent,i));
+                        //console.log(z_data[i]+"");
+                    }
+
+                    var data = [{
+                        z: z_data,
+                        type: 'surface'
+                    }];
+
+                    var layout = {
+                        title: '3D Surface Plot of Stress at Workplace',
+                        scene: {
+                            xaxis:{title: 'X: Agent'},
+                            yaxis:{title: 'Y: Time'},
+                            zaxis:{title: 'Z: Level'},
+                        },
+                        autosize: false,
+                        width: 700,
+                        height: 700,
+                        margin: {
+                            l: 0,
+                            r: 0,
+                            b: 0,
+                            t: 0
+                        }
+                    };
+
+                    Plotly.newPlot('myDiv_plot', data, layout);
+
+
+                    // Analysis Chart =================================================================================================
+
+                    function indexOfMax(arr) {
+                        if (arr.length === 0) {
+                            return -1;
+                        }
+
+                        var max = arr[0];
+                        var maxIndex = 0;
+
+                        for (var i = 1; i < arr.length; i++) {
+                            if (arr[i] > max) {
+                                maxIndex = i;
+                                max = arr[i];
+                            }
+                        }
+
+                        return maxIndex;
+                    }
+
+                    function indexOfSmallest(a) {
+                        return a.indexOf(Math.min.apply(Math, a));
+                    }
+
+                    // Analysis OS
+                    //var max_stress_agent, min_stress_agent, mid_stress_agent;
+                    max_stress_agent = indexOfMax(OS_Ls);
+                    min_stress_agent = indexOfSmallest(OS_Ls);
+                    //console.log("Max :"+ max_stress_agent + ", Low:" + min_stress_agent);
+
+
+                    // Avg of Ls
+                    var sumLs = 0;
+                    for( var i = 0; i < OS_Ls.length; i++ ){
+                        sumLs += OS_Ls[i]; //don't forget to add the base
+                    }
+                    avgLs_OS = sumLs/OS_Ls.length;
+                    //console.log(" Avg Ls :"+ avgLs_OS);
+
+
+                    //var OS = [], Scnew = [];
+                    OS[0] = 0.1;
+                    Scnew[0] = oldSc[max_stress_agent];
+                    $('#optionsRadios1_max_stressed').prop("checked", true);
+                    for(var t = 1 ; t < 100 ; t++){
+                        OS[t] = OS[t-1] + 0.3 * (avgLs_OS - OS[t-1]) * (1-OS[t-1]) * OS[t-1] * 0.9;
+                        Scnew[t] = oldSc[max_stress_agent] * (1 - (0.5 * OS[t]));
+                        //console.log(t + " OS :"+ OS[t-1] + ", Scnew:" + Scnew[t-1]);
+                    }
+
+                    var sin = [],
+                        cos = [];
+                    for (var i = 0; i < 100; i ++) {
+                        sin.push([i, OS[i]]);
+                        cos.push([i, Scnew[i]]);
+                    }
+                    var options = {
+                        series: {
+                            lines: {
+                                show: true
+                            },
+                            points: {
+                                show: true
+                            }
+                        },
+                        grid: {
+                            hoverable: true //IMPORTANT! this is needed for tooltip to work
+                        },
+                        yaxis: {
+                            min: 0,
+                            max: 1
+                        },
+                        xaxis:{
+                            min: 0,
+                            max: 100
+                        },
+                        tooltip: true,
+                        tooltipOpts: {
+                            content: "'%s' of %x.1 is %y.4",
+                            shifts: {
+                                x: -60,
+                                y: 25
+                            }
+                        }
+                    };
+
+                    var plotObj2 = $.plot($("#flot-line-chart"), [{
+                            data: sin,
+                            label: "Organizational Stress"
+                        }, {
+                            data: cos,
+                            label: "Social Support"
+                        }],
+                        options);
+                    //console.log(" plotObj2 :"+ plotObj2['0']);
+
+                    // Pie Chart  ==========================================================================================
+                    var xdata = [];
+
+                    // Loc 1
+                    xdata = [{
+                        label: "Long Term Overload Job",
+                        data: avg_lv[0]
+                    }, {
+                        label: "Long Term Passive Job",
+                        data: avg_lp[0]
+                    }, {
+                        label: "Long Term Stress",
+                        data: avg_ls[0]
+                    }, {
+                        label: "Long Term Active Job",
+                        data: avg_la[0]
+                    }];
+
+                    if(xdata != null) {
+
+                        var plotObj = $.plot($("#flot-pie-chart-based-on_loc"), xdata, {
+                            series: {
+                                pie: {
+                                    show: true
+                                }
+                            },
+                            grid: {
+                                hoverable: true
+                            },
+                            tooltip: true,
+                            tooltipOpts: {
+                                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+                                shifts: {
+                                    x: 20,
+                                    y: 0
+                                },
+                                defaultTheme: false
+                            }
+                        });
+                    }
+
+
+
+                    // History Stress and Active ========================================================================================
+
+                    var stress_level = [];
+                    for (var i = 0; i < AVG_LS_ARRAY.length; i ++) {
+                        stress_level.push([i, AVG_LS_ARRAY[i]]);
+                    }
+                    var options_stress = {
+                        series: {
+                            lines: {
+                                show: true
+                            },
+                            points: {
+                                show: true
+                            }
+                        },
+                        grid: {
+                            hoverable: true //IMPORTANT! this is needed for tooltip to work
+                        },
+                        yaxis: {
+                            min: 0,
+                            max: 1
+                        },
+                        xaxis:{
+                            min: 0,
+                            max: (AVG_LS_ARRAY.length - 1)
+                        },
+                        tooltip: true,
+                        tooltipOpts: {
+                            content: "'%s' of %x.1 is %y.4",
+                            shifts: {
+                                x: -60,
+                                y: 25
+                            }
+                        }
+                    };
+
+                    var plotObj2 = $.plot($("#flot-line-chart-moving-stress"), [{
+                            data: stress_level,
+                            label: "Stress Level"
+                        }],
+                        options_stress);
+
+
+                    var active_level = [];
+                    for (var i = 0; i < AVG_LA_ARRAY.length; i ++) {
+                        active_level.push([i, AVG_LA_ARRAY[i]]);
+                    }
+                    var options_active = {
+                        series: {
+                            lines: {
+                                show: true
+                            },
+                            points: {
+                                show: true
+                            }
+                        },
+                        grid: {
+                            hoverable: true //IMPORTANT! this is needed for tooltip to work
+                        },
+                        yaxis: {
+                            min: 0,
+                            max: 1
+                        },
+                        xaxis:{
+                            min: 0,
+                            max: (AVG_LA_ARRAY.length - 1)
+                        },
+                        tooltip: true,
+                        tooltipOpts: {
+                            content: "'%s' of %x.1 is %y.4",
+                            shifts: {
+                                x: -60,
+                                y: 25
+                            }
+                        }
+                    };
+
+                    var plotObj2 = $.plot($("#flot-line-chart-moving-active"), [{
+                            data: active_level,
+                            label: "Active Level"
+                        }],
+                        options_active);
+
+                    /*
+
+                    var container = $("#flot-line-chart-moving-stress");
+
+                    // Determine how many data points to keep based on the placeholder's initial size;
+                    // this gives us a nice high-res plot while avoiding more than one point per pixel.
+
+                    var maximum = container.outerWidth() / 2 || 300;
+                    var data_stress = [];
+                    function getRandomData() {
+
+                        var res = [];
+                        for (var i = 0; i < AVG_LS_ARRAY.length; i++) {
+                            res.push([i, AVG_LS_ARRAY[i]]);
+                            //console.log(" getRandomData :"+ AVG_LS_ARRAY[i]);
+                        }
+                        return res;
+                    }
+
+                    series = [{
+                        data: getRandomData(),
+                        lines: {
+                            fill: false
+                        }
+                    }];
+
+                    var plot_stress = $.plot(container, series, {
+                        grid: {
+                            borderWidth: 1,
+                            minBorderMargin: 20,
+                            labelMargin: 10,
+                            backgroundColor: {
+                                colors: ["#fff", "#e4f4f4"]
+                            },
+                            margin: {
+                                top: 8,
+                                bottom: 20,
+                                left: 20
+                            },
+                            markings: function(axes) {
+                                var markings = [];
+                                var xaxis = axes.xaxis;
+                                for (var x = Math.floor(xaxis.min); x < xaxis.max; x += xaxis.tickSize * 2) {
+                                    markings.push({
+                                        xaxis: {
+                                            from: x,
+                                            to: x + xaxis.tickSize
+                                        },
+                                        color: "rgba(232, 232, 255, 0.2)"
+                                    });
+                                }
+                                return markings;
+                            }
+                        },
+                        xaxis: {
+                            tickFormatter: function() {
+                                return "";
+                            }
+                        },
+                        yaxis: {
+                            min: 0,
+                            max: 1
+                        },
+                        legend: {
+                            show: true
+                        }
+                    });
+
+                    // Update the random dataset at 25FPS for a smoothly-animating chart
+
+                    setInterval(function updateRandom() {
+                        series[0].data = getRandomData();
+                        plot_stress.setData(series);
+                        plot_stress.draw();
+                    }, 2000);
+
+
+                    //AVG_LA_ARRAY
+
+                    var container_active = $("#flot-line-chart-moving-active");
+
+                    // Determine how many data points to keep based on the placeholder's initial size;
+                    // this gives us a nice high-res plot while avoiding more than one point per pixel.
+
+                    //var maximum_active = container_active.outerWidth() / 2 || 300;
+
+                    function getRandomData_LA() {
+                        var res_LA = [];
+                        for (var i = 0; i < AVG_LA_ARRAY.length; i++) {
+                            res_LA.push([i, AVG_LA_ARRAY[i]]);
+                            //console.log(" getRandomData :"+ AVG_LA_ARRAY[i]);
+                        }
+                        return res_LA;
+                    }
+
+                    series_la = [{
+                        data: getRandomData_LA(),
+                        lines: {
+                            fill: true
+                        }
+                    }];
+
+                    var plot_active = $.plot(container_active, series_la, {
+                        grid: {
+                            borderWidth: 1,
+                            minBorderMargin: 20,
+                            labelMargin: 10,
+                            backgroundColor: {
+                                colors: ["#fff", "#e4f4f4"]
+                            },
+                            margin: {
+                                top: 8,
+                                bottom: 20,
+                                left: 20
+                            },
+                            markings: function(axes) {
+                                var markings = [];
+                                var xaxis = axes.xaxis;
+                                for (var x = Math.floor(xaxis.min); x < xaxis.max; x += xaxis.tickSize * 2) {
+                                    markings.push({
+                                        xaxis: {
+                                            from: x,
+                                            to: x + xaxis.tickSize
+                                        },
+                                        color: "rgba(232, 232, 255, 0.2)"
+                                    });
+                                }
+                                return markings;
+                            }
+                        },
+                        xaxis: {
+                            tickFormatter: function() {
+                                return "";
+                            }
+                        },
+                        yaxis: {
+                            min: 0,
+                            max: 1
+                        },
+                        legend: {
+                            show: true
+                        }
+                    });
+
+                    // Update the random dataset at 25FPS for a smoothly-animating chart
+
+                    setInterval(function updateRandom() {
+                        series_la[0].data = getRandomData_LA();
+                        plot_active.setData(series_la);
+                        plot_active.draw();
+                    }, 40);
+
+
+                    */
+
+                });
+
+        });
+
+        socket.on('update_loc_for_spinners', function (data) {
+
+            //console.log(data+"");
+            var loc_i = 0;
+            var main_obj_all = data;
+            //var obj_Names = [];
+
+            /*
+            if(loc_i == 0){
+                var x = document.getElementById("loc_id");
+                if(Im_new_agent == 0){
+                    if (x.length > 0) {
+                        x.remove(x.length - 1);
+                        //loc_i++;
+                    }
+                }
+                var option = document.createElement("option");
+                option.text = "None";
+                x.add(option);
+            }
+            */
+            var x = document.getElementById("loc_id");
+            if (x.length > 0) {
+                for(var i = 0 ; x.length > 0 ; i++){
+                    if(Im_new_agent == 0){
+                        x.remove(x.length - 1);
+                    }
+                }
+            }
+            var option = document.createElement("option");
+            option.text = "None";
+            x.add(option);
+            //loc_i++;
+
+            for (var main_key in main_obj_all) {
+                if (main_obj_all.hasOwnProperty(main_key)) {
+                    var obj_all_ = main_obj_all[main_key];
+                    //console.log(" -> " + obj_all_);
+
+                    for (var key_ in obj_all_) {
+                        if (obj_all_.hasOwnProperty(key_)) {
+
+                            //console.log(loc_i+" -> " + obj_Names);
+
+                            //console.log(key_+" -> " + obj_all_[key_][loc_i]);
+
+                                var xX = document.getElementById("loc_id");
+                                //if (Im_new_agent == 0) {
+                                //    if (xX.length > 0) {
+                                //        xX.remove(xX.length - 1);
+                                //    }
+                                //}
+
+                                var option = document.createElement("option");
+                                option.text = obj_all_[key_][loc_i] + "";
+                                xX.add(option);
+
+                            //var oName = {};
+                            //oName[loc_i] = key_;
+                            //obj_Names.push(oName);
+                            //console.log(key_+" -> " + obj_Names[loc_i][loc_i]);//obj_Names[loc_i][loc_i]
+
+                        }
+                        loc_i++;
+                    }
+                }
+            }
+            if(Im_new_agent == 1){
+                Im_new_agent = 0;
+                document.getElementById("loc_id").selectedIndex = "1";
+                document.getElementById("show_stress").click();
+            }
+
+
+
+
+        });
+
+        socket.on('user joined', function (data) {
+            console.log(data.username + ' joined');
+            $('#online-agent').text(data.username);
+        });
+
+        socket.on('user left', function (data) {
+            console.log(data.username + ' left');
+            $('#online-agent').text(data.username);
+            //removeChatTyping(data);
+        });
+
+        // RealTime ---
+        socket.on('Temporals_node', function () {
+            console.log(' here ');
+            var loc_id = $('#loc_id').val();
+
+            $('#name-based-on_loc').text('Location '+loc_id);
+
+            $.getJSON("temp_file.json", function(data) {
+                //console.log( "success" );
+                //console.log(data);
+                data_temp = data;
+            })
+                .done(function() {
+                    //console.log( "second success" );
+                    //console.log(data_temp);
+                })
+                .fail(function() {
+                    //console.log( "error" );
+                })
+                .always(function() {
+
+                    //console.log( "complete" );
+                    //console.log(data_temp);
+                    //socket.emit('Temporals_node',"");
+
+                    // ==================== Get Avg
+                    var avg_la = [],avg_lp = [],avg_lv = [],avg_ls = [];
+                    var obj_all = data_temp;
+                    var main_obj_all = obj_all;
+                    var loc_i = 0;
+
+                    // Var for analysis part
+                    var OS_Ls = [];
+                    //var oldSc = [];
+
+                    // For History Stress and Active
+                    AVG_LS_ARRAY = [];
+                    AVG_LA_ARRAY = [];
+
+                    //For insilt 3D plot
+                    iAgent = 1;
+                    OneByOneAgent = [];
+
+                    for (var main_key in main_obj_all) {
+                        if (main_obj_all.hasOwnProperty(main_key)) {
+                            obj_all_ = main_obj_all[main_key];
+                            for (var key_ in obj_all_) {
+                                if (obj_all_.hasOwnProperty(key_)) {
+                                    //console.log(key_ + " = "+ loc_id);
+                                    if (key_ == loc_id){
+                                        length_array = obj_all_[key_].length;
+                                        //console.log(key_ + " length -> " + obj_all_[key_].length);
+                                        if (length_array > 0) {
+                                            // AVG La============================================
+                                            var sum = 0;
+                                            //console.log(key_ + " -> " + obj_all_[key_][loc_i].La);
+                                            for (var i = 0; i < length_array; i++) {
+                                                sum += obj_all_[key_][i].La; //don't forget to add the base
+
+                                                // For history active level
+                                                var avg_hiy = sum / (i+1);
+                                                AVG_LA_ARRAY[i] = avg_hiy;
+
+                                            }
+                                            var avg = sum / length_array;
+                                            avg_la[loc_i] = avg;
+                                            //console.log('loc' + loc_i + 'La avg: ' + avg);
+
+                                            // AVG Lp=============================================
+                                            sum = 0;
+                                            for (var i = 0; i < length_array; i++) {
+                                                sum += obj_all_[key_][i].Lp; //don't forget to add the base
+                                            }
+                                            avg = sum / length_array;
+                                            avg_lp[loc_i] = avg;
+                                            //console.log('loc' + loc_i + 'Lp avg: ' + avg);
+
+                                            // AVG Lv==============================================
+                                            sum = 0;
+                                            for (var i = 0; i < length_array; i++) {
+                                                sum += obj_all_[key_][i].Lv; //don't forget to add the base
+                                            }
+                                            avg = sum / length_array;
+                                            avg_lv[loc_i] = avg;
+                                            //console.log('loc' + loc_i + 'Lv avg: ' + avg);
+
+                                            // AVG Ls=============================================
+                                            sum = 0;
+                                            for (var i = 0; i < length_array; i++) {
+                                                sum += obj_all_[key_][i].Ls; //don't forget to add the base
+
+                                                // For Analysis part
+                                                OS_Ls[i] = obj_all_[key_][i].Ls;
+                                                oldSc[i] = obj_all_[key_][i].Sc;
+                                                //console.log(i+' loc ---- HERE ' + oldSc[i]);
+
+                                                // For History Part
+                                                var avg_hiy = sum / (i+1);
+                                                AVG_LS_ARRAY[i] = avg_hiy;
+
+                                                //For 3D plot
+                                                ex = obj_all_[key_][i].Ex;
+                                                er = obj_all_[key_][i].Er;
+                                                sc = obj_all_[key_][i].Sc;
+                                                py = obj_all_[key_][i].Py;
+                                                tp = obj_all_[key_][i].Tp;
+                                                ab = obj_all_[key_][i].Ab;
+                                                jl = obj_all_[key_][i].Jl;
+                                                calculation();
+
+                                            }
+                                            avg = sum / length_array;
+                                            avg_ls[loc_i] = avg;
+                                            //console.log('loc' + loc_i + 'Ls avg: ' + avg);
+
+                                        } else if (length_array == 0) {
+                                            avg_la[loc_i] = 0.1;
+                                            avg_lp[loc_i] = 0.1;
+                                            avg_lv[loc_i] = 0.1;
+                                            avg_ls[loc_i] = 0.1;
+
+                                            OS_Ls = [0];
+                                            AVG_LS_ARRAY = [0];
+                                            AVG_LA_ARRAY = [0];
+                                        }
+                                        loc_i++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
+                    // For 3D plot
+
+                    function unpack(rows, key) {
+                        return rows.map(
+                            function(row)
+                            {
+                                return row[key];
+                            }
+                        );
+                    }
+
+                    var z_data=[];
+                    for(var i=0;i<1000;i++) {
+
+                        z_data.push(unpack(OneByOneAgent,i));
+                        //console.log(z_data[i]+"");
+                    }
+
+                    var data = [{
+                        z: z_data,
+                        type: 'surface'
+                    }];
+
+                    var layout = {
+                        title: '3D Surface Plot of Stress at Workplace',
+                        scene: {
+                            xaxis:{title: 'X: Agent'},
+                            yaxis:{title: 'Y: Time'},
+                            zaxis:{title: 'Z: Level'},
+                        },
+                        autosize: false,
+                        width: 700,
+                        height: 700,
+                        margin: {
+                            l: 0,
+                            r: 0,
+                            b: 0,
+                            t: 0
+                        }
+                    };
+
+                    Plotly.newPlot('myDiv_plot', data, layout);
+
+
+                    // Analysis Chart =================================================================================================
+
+                    function indexOfMax(arr) {
+                        if (arr.length === 0) {
+                            return -1;
+                        }
+
+                        var max = arr[0];
+                        var maxIndex = 0;
+
+                        for (var i = 1; i < arr.length; i++) {
+                            if (arr[i] > max) {
+                                maxIndex = i;
+                                max = arr[i];
+                            }
+                        }
+
+                        return maxIndex;
+                    }
+
+                    function indexOfSmallest(a) {
+                        return a.indexOf(Math.min.apply(Math, a));
+                    }
+
+                    // Analysis OS
+                    //var max_stress_agent, min_stress_agent, mid_stress_agent;
+                    max_stress_agent = indexOfMax(OS_Ls);
+                    min_stress_agent = indexOfSmallest(OS_Ls);
+                    //console.log("Max :"+ max_stress_agent + ", Low:" + min_stress_agent);
+
+
+                    // Avg of Ls
+                    var sumLs = 0;
+                    for( var i = 0; i < OS_Ls.length; i++ ){
+                        sumLs += OS_Ls[i]; //don't forget to add the base
+                    }
+                    avgLs_OS = sumLs/OS_Ls.length;
+                    //console.log(" Avg Ls :"+ avgLs_OS);
+
+
+                    //var OS = [], Scnew = [];
+                    OS[0] = 0.1;
+                    Scnew[0] = oldSc[max_stress_agent];
+                    $('#optionsRadios1_max_stressed').prop("checked", true);
+                    for(var t = 1 ; t < 100 ; t++){
+                        OS[t] = OS[t-1] + 0.3 * (avgLs_OS - OS[t-1]) * (1-OS[t-1]) * OS[t-1] * 0.9;
+                        Scnew[t] = oldSc[max_stress_agent] * (1 - (0.5 * OS[t]));
+                        //console.log(t + " OS :"+ OS[t-1] + ", Scnew:" + Scnew[t-1]);
+                    }
+
+                    var sin = [],
+                        cos = [];
+                    for (var i = 0; i < 100; i ++) {
+                        sin.push([i, OS[i]]);
+                        cos.push([i, Scnew[i]]);
+                    }
+                    var options = {
+                        series: {
+                            lines: {
+                                show: true
+                            },
+                            points: {
+                                show: true
+                            }
+                        },
+                        grid: {
+                            hoverable: true //IMPORTANT! this is needed for tooltip to work
+                        },
+                        yaxis: {
+                            min: 0,
+                            max: 1
+                        },
+                        xaxis:{
+                            min: 0,
+                            max: 100
+                        },
+                        tooltip: true,
+                        tooltipOpts: {
+                            content: "'%s' of %x.1 is %y.4",
+                            shifts: {
+                                x: -60,
+                                y: 25
+                            }
+                        }
+                    };
+
+                    var plotObj2 = $.plot($("#flot-line-chart"), [{
+                            data: sin,
+                            label: "Organizational Stress"
+                        }, {
+                            data: cos,
+                            label: "Social Support"
+                        }],
+                        options);
+                    //console.log(" plotObj2 :"+ plotObj2['0']);
+
+                    // Pie Chart  ==========================================================================================
+                    var xdata = [];
+
+                    // Loc 1
+                    xdata = [{
+                        label: "Long Term Overload Job",
+                        data: avg_lv[0]
+                    }, {
+                        label: "Long Term Passive Job",
+                        data: avg_lp[0]
+                    }, {
+                        label: "Long Term Stress",
+                        data: avg_ls[0]
+                    }, {
+                        label: "Long Term Active Job",
+                        data: avg_la[0]
+                    }];
+
+                    if(xdata != null) {
+
+                        var plotObj = $.plot($("#flot-pie-chart-based-on_loc"), xdata, {
+                            series: {
+                                pie: {
+                                    show: true
+                                }
+                            },
+                            grid: {
+                                hoverable: true
+                            },
+                            tooltip: true,
+                            tooltipOpts: {
+                                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+                                shifts: {
+                                    x: 20,
+                                    y: 0
+                                },
+                                defaultTheme: false
+                            }
+                        });
+                    }
+
+
+
+                    // History Stress and Active ========================================================================================
+
+                    var stress_level = [];
+                    for (var i = 0; i < AVG_LS_ARRAY.length; i ++) {
+                        stress_level.push([i, AVG_LS_ARRAY[i]]);
+                    }
+                    var options_stress = {
+                        series: {
+                            lines: {
+                                show: true
+                            },
+                            points: {
+                                show: true
+                            }
+                        },
+                        grid: {
+                            hoverable: true //IMPORTANT! this is needed for tooltip to work
+                        },
+                        yaxis: {
+                            min: 0,
+                            max: 1
+                        },
+                        xaxis:{
+                            min: 0,
+                            max: (AVG_LS_ARRAY.length - 1)
+                        },
+                        tooltip: true,
+                        tooltipOpts: {
+                            content: "'%s' of %x.1 is %y.4",
+                            shifts: {
+                                x: -60,
+                                y: 25
+                            }
+                        }
+                    };
+
+                    var plotObj2 = $.plot($("#flot-line-chart-moving-stress"), [{
+                            data: stress_level,
+                            label: "Stress Level"
+                        }],
+                        options_stress);
+
+
+                    var active_level = [];
+                    for (var i = 0; i < AVG_LA_ARRAY.length; i ++) {
+                        active_level.push([i, AVG_LA_ARRAY[i]]);
+                    }
+                    var options_active = {
+                        series: {
+                            lines: {
+                                show: true
+                            },
+                            points: {
+                                show: true
+                            }
+                        },
+                        grid: {
+                            hoverable: true //IMPORTANT! this is needed for tooltip to work
+                        },
+                        yaxis: {
+                            min: 0,
+                            max: 1
+                        },
+                        xaxis:{
+                            min: 0,
+                            max: (AVG_LA_ARRAY.length - 1)
+                        },
+                        tooltip: true,
+                        tooltipOpts: {
+                            content: "'%s' of %x.1 is %y.4",
+                            shifts: {
+                                x: -60,
+                                y: 25
+                            }
+                        }
+                    };
+
+                    var plotObj2 = $.plot($("#flot-line-chart-moving-active"), [{
+                            data: active_level,
+                            label: "Active Level"
+                        }],
+                        options_active);
+
+
+
+                });
+
+
+        });
+
+
+        function calculation(){
+            // call first function and pass in a callback function which
+            // first function runs when it has completed
+            cala(function() {
+
+
+                iAgent++;
+                //iAgent = 1;
+            });
+        }
+        var ex = 0.1,er = 0.1,sc = 0.1,py = 0.1,tp = 0.9,ab = 0.1,jl = 0.9;
+        var iAgent;
+        var OneByOneAgent = [];
+
+
+        var CuDalt,Cu_nLa,Cu_nLp,Cu_nLv,Cu_nLs;
+        socket.on('Loud_Para', function (dat,nLa,nLp,nLv,nLs){
+
+            CuDalt = dat;
+            Cu_nLa = nLa;
+            Cu_nLp = nLp;
+            Cu_nLv = nLv;
+            Cu_nLs = nLs;
+        });
+        //var newLa = -1,newLp = -1,newLv = -1,newLs= -1;
+        // For analysis part
+        var Sc_float;
+
+        function cala(_callback) {
+
+            var time = 1000;
+
+            var Ex = new Array();
+            var Er = new Array();
+            var Sc = new Array();
+            var Py = new Array();
+            var Tp =new Array();
+            var Abnorm =new Array();
+            var Jlbasic =new Array();
+
+            var Ab = new Array();
+            var Tc = new Array();
+            var Pr = new Array();
+            var Sr = new Array();
+            var Jc = new Array();
+            var Jd = new Array();
+            var Jl = new Array();
+            var Sv = new Array();
+            var Pj = new Array();
+            var Aj = new Array();
+            var Js = new Array();
+            var Ss = new Array();
+
+            var La = new Array();
+            var Lp = new Array();
+            var Lv = new Array();
+            var Ls = new Array();
+
+            for (var t = 0 ; t < time ; t++) {
+                Ex[t] = ex;
+                Er[t] = er;
+                Sc[t] = sc;
+                Py[t] = py;
+                Tp[t] = tp;
+                Abnorm[t] = ab;
+                Jlbasic[t] = jl;
+            }
+
+            var delT;
+            var nLs =  0.3;
+            var nLa =  0.3;
+            var nLv =  0.3;
+            var nLp =  0.3;
+
+            if(Cu_nLa != undefined && Cu_nLp != undefined && Cu_nLv != undefined && Cu_nLs != undefined && CuDalt != undefined){
+                //if((Cu_nLa > 0 && Cu_nLa < 1) && (Cu_nLp > 0 && Cu_nLp < 1) && (Cu_nLv > 0 && Cu_nLv < 1) && (Cu_nLs > 0 && Cu_nLs < 1) && (CuDalt > 0 && CuDalt < 1)){
+                nLa =  Cu_nLa;
+                nLp =  Cu_nLp;
+                nLv =  Cu_nLv;
+                nLs =  Cu_nLs;
+                delT = CuDalt;
+                //console.log(' joined --- Yes they take value'+Cu_nLa+','+Cu_nLp+','+Cu_nLv+','+Cu_nLs+','+CuDalt);
+            }else{
+                nLs =  0.3;
+                nLa =  0.3;
+                nLv =  0.3;
+                nLp =  0.3;
+                delT =  0.5;
+            }
+
+            //  For this case
+            var aAb =  0.7;
+
+            var aTc =  0.7;
+
+            var bPr =  0.7;
+
+            var aJl =  0.7;
+
+            var yJc =  0.7;
+
+            var uJd =  0.7;
+
+            var uPj =  0.7;
+
+            var bAj =  0.7;
+
+            var yJs =  0.7;
+
+            var ySs =  0.7;
+
+            var wSr1 =  0.33;
+            var wSr2 =  0.33;
+            var wSr3 =  0.33;
+
+            var wJs1 =  0.33;
+            var wJs2 =  0.33;
+            var wJs3 =  0.33;
+
+
+            La[1] =  0.1;
+            Lp[1] =  0.1;
+            Lv[1] =  0.1;
+            Ls[1] =  0.1;
+
+            //
+
+            Ab[1] = aAb * Abnorm[1] + (1-aAb) * (La[1] * (1-Lp[1])) * Abnorm[1];
+            Tc[1] = aTc * Ab[1] + (1-aTc) * Ex[1];
+            Sr[1] = wSr1 * Py[1] + wSr2 * Er[1] + wSr3 * Sc[1];
+
+            Pr[1] = bPr * Sr[1] + (1-bPr) * Tc[1];
+
+            Jl[1] = aJl * Jlbasic[1] + (1-aJl) * Lv[1];
+
+            Jc[1] = (yJc * Ex[1] + (1-yJc) * Py[1]) * (1-Ls[1]);
+            Jd[1] = (uJd * Jl[1] + (1-uJd) * Tp[1]) * (1-Jc[1]);
+
+
+            Sv[1] = Tp[1] * (1-Jc[1]);
+
+
+            Pj[1] = Pr[1] * (1-(uPj * Jc[1] + (1-uPj) * Jd[1]));
+            Aj[1] = (bAj* Pr[1]+(1-bAj)*Jc[1])*(1-Jd[1]);
+
+            Js[1] = (yJs * Jd[1] + (1-yJs) * Ls[1]) * (1-((wJs1 * Pr[1] + wJs2 * Er[1] + wJs3 * Jc[1]) * (1-Ls[1])));
+
+            Ss[1] = ySs * Js[1] + (1-ySs) * Sv[1];
+
+
+            //publishProgress(1);
+
+            OneByOneAgent[iAgent] = [];
+            OneByOneAgent[iAgent][1] = Ls[1];
+            for(var t = 2; t < time ; t++){
+
+                Ab[t] = aAb * Abnorm[t-1] + (1-aAb) * (La[t-1] * (1-Lp[t-1])) * Abnorm[t-1];//
+                Tc[t] = aTc * Ab[t] + (1-aTc) * Ex[t];//
+                Sr[t] = wSr1 * Py[t] + wSr2 * Er[t] + wSr3 * Sc[t];//
+
+                Pr[t] = bPr * Sr[t] + (1-bPr) * Tc[t];//
+
+                Jl[t] = aJl * Jlbasic[t-1] + (1-aJl) * Lv[t-1];//
+
+                Jc[t] = (yJc * Ex[t] + (1-yJc) * Py[t]) * (1-Ls[t-1]);//
+                Jd[t] = (uJd * Jl[t] + (1-uJd) * Tp[t]) * (1-Jc[t]);//
+
+                Sv[t] = Tp[t] * (1-Jc[t]);//
+
+                Pj[t] = Pr[t] * (1-(uPj * Jc[t] + (1-uPj) * Jd[t]));//
+                Aj[t] = (bAj* Pr[t]+(1-bAj)*Jc[t])*(1-Jd[t]);//
+
+                Js[t] = (yJs * Jd[t] + (1-yJs) * Ls[t-1]) * (1- (( wJs1 * Pr[t] + wJs2 * Er[t] + wJs3 * Jc[t]) * (1-Ls[t-1]) ));//
+
+                Ss[t] = ySs * Js[t] + (1-ySs) * Sv[t];
+
+                //Log.e("Ls", La[t-1]+" ,"+Aj[t]+ " ,");
+
+
+                La[t] = La[t-1] + nLa * (Aj[t]-La[t-1]) * (1-La[t-1]) * La[t-1] * delT;
+                Lp[t] = Lp[t-1] + nLp * (Pj[t]-Lp[t-1]) * (1-Lp[t-1]) * Lp[t-1] * delT;
+
+                Lv[t] = Lv[t-1] + nLv * (Sv[t]-Lv[t-1]) * (1-Lv[t-1]) * Lv[t-1] * delT;
+                Ls[t] = Ls[t-1] + nLs * (Ss[t]-Ls[t-1]) * (1-Ls[t-1]) * Ls[t-1] * delT;
+
+                OneByOneAgent[iAgent][t] = Ls[t];
+                //Log.e("Ls", t+ "");
+                //publishProgress(t);
+            }
+
+            _callback();
+        }
+
+
+    });
+</script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../dist/js/sb-admin-2.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+</body>
+
+</html>

@@ -98,21 +98,21 @@ $(function() {
 
             Py_float = (
 
-                0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_1)) + 0.7 * parseFloat(give_me_float_from_string(py_q_6))) +
-                0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_2)) + 0.7 * parseFloat(give_me_float_from_string(py_q_7))) +
-                0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_3)) + 0.7 * parseFloat(give_me_float_from_string(py_q_8))) +
-                0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_5)) + 0.7 * parseFloat(give_me_float_from_string(py_q_10)))
+                0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_1)) + 0.7 * parseFloat(give_me_float_from_string_neg(py_q_6))) +
+                0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string_neg(py_q_2)) + 0.7 * parseFloat(give_me_float_from_string(py_q_7))) +
+                0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_3)) + 0.7 * parseFloat(give_me_float_from_string_neg(py_q_8))) +
+                0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_5)) + 0.7 * parseFloat(give_me_float_from_string_neg(py_q_10)))
 
-            ) * ( 1 - ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_4)) + 0.7 * parseFloat(give_me_float_from_string(py_q_9))));
+            ) * ( 1 - ((1 - 0.7) * parseFloat(give_me_float_from_string_neg(py_q_4)) + 0.7 * parseFloat(give_me_float_from_string(py_q_9))));
 
             py = (
 
-                    0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_1)) + 0.7 * parseFloat(give_me_float_from_string(py_q_6))) +
-                    0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_2)) + 0.7 * parseFloat(give_me_float_from_string(py_q_7))) +
-                    0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_3)) + 0.7 * parseFloat(give_me_float_from_string(py_q_8))) +
-                    0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_5)) + 0.7 * parseFloat(give_me_float_from_string(py_q_10)))
+                    0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_1)) + 0.7 * parseFloat(give_me_float_from_string_neg(py_q_6))) +
+                    0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string_neg(py_q_2)) + 0.7 * parseFloat(give_me_float_from_string(py_q_7))) +
+                    0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_3)) + 0.7 * parseFloat(give_me_float_from_string_neg(py_q_8))) +
+                    0.25 * ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_5)) + 0.7 * parseFloat(give_me_float_from_string_neg(py_q_10)))
 
-                ) * ( 1 - ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_4)) + 0.7 * parseFloat(give_me_float_from_string(py_q_9))));
+                ) * ( 1 - ((1 - 0.7) * parseFloat(give_me_float_from_string_neg(py_q_4)) + 0.7 * parseFloat(give_me_float_from_string(py_q_9))));
 
             py_q = 'PASS';
 
@@ -126,8 +126,8 @@ $(function() {
 
         if(tp_q_1 != 'None' && tp_q_2 != 'None' && tp_q_3 != 'None'){
 
-            tp = 0.33 * parseFloat(give_me_float_from_string(tp_q_1)) + 0.33 * parseFloat(give_me_float_from_string(tp_q_2)) + 0.33 * parseFloat(give_me_float_from_string(tp_q_3));
-            Tp_float = 0.33 * parseFloat(give_me_float_from_string(tp_q_1)) + 0.33 * parseFloat(give_me_float_from_string(tp_q_2)) + 0.33 * parseFloat(give_me_float_from_string(tp_q_3));
+            tp = 0.33 * parseFloat(give_me_float_from_string_neg(tp_q_1)) + 0.33 * parseFloat(give_me_float_from_string_neg(tp_q_2)) + 0.33 * parseFloat(give_me_float_from_string(tp_q_3));
+            Tp_float = 0.33 * parseFloat(give_me_float_from_string_neg(tp_q_1)) + 0.33 * parseFloat(give_me_float_from_string_neg(tp_q_2)) + 0.33 * parseFloat(give_me_float_from_string(tp_q_3));
 
             tp_q = 'PASS';
 
@@ -156,8 +156,8 @@ $(function() {
 
         if(jl_q_1 != 'None' && jl_q_2 != 'None'){
 
-            jl = (1 - 0.7) * parseFloat(give_me_float_from_string(jl_q_1)) + 0.7 * parseFloat(give_me_float_from_string(jl_q_2));
-            Jl_float = (1 - 0.7) * parseFloat(give_me_float_from_string(jl_q_1)) + 0.7 * parseFloat(give_me_float_from_string(jl_q_2));
+            jl = (1 - 0.7) * parseFloat(give_me_float_from_string_neg(jl_q_1)) + 0.7 * parseFloat(give_me_float_from_string_neg(jl_q_2));
+            Jl_float = (1 - 0.7) * parseFloat(give_me_float_from_string_neg(jl_q_1)) + 0.7 * parseFloat(give_me_float_from_string_neg(jl_q_2));
 
             jl_q = 'PASS';
 
@@ -225,6 +225,35 @@ $(function() {
                 break;
             case 'Strongly Agree':
                 float_number = 0.9;
+                break;
+        }
+        return float_number;
+    }
+    function give_me_float_from_string_neg(string_data) {
+        /*
+         <option>None</option>
+         <option>Strongly Disagree</option>
+         <option>Disagree</option>
+         <option>Neutral</option>
+         <option>Agree</option>
+         <option>Strongly Agree</option>
+         */
+        var float_number;
+        switch(string_data){
+            case 'Strongly Disagree':
+                float_number = 0.9;
+                break;
+            case 'Disagree':
+                float_number = 0.7;
+                break;
+            case 'Neutral':
+                float_number = 0.5;
+                break;
+            case 'Agree':
+                float_number = 0.3;
+                break;
+            case 'Strongly Agree':
+                float_number = 0.1;
                 break;
         }
         return float_number;

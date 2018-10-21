@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Stress Aware Analytic at Workplace System</title>
+    <title>Blues[a]Work</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Stress Aware Analytics at Workplace</a>
+            <a class="navbar-brand" href="index.html">Blues[a]Work</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -59,6 +59,9 @@
                 <ul class="nav" id="side-menu">
                     <li>
                         <a href="index.html"><i class="fa fa-table fa-fw"></i> Dashboard </a>
+                    </li>
+                    <li>
+                        <a href="location.html"><i class="fa fa-bar-chart-o fa-fw"></i> By Location </a>
                     </li>
                     <li>
                         <a href="questionnaire.html"><i class="fa fa-edit fa-fw"></i> Questionnaire </a>
@@ -80,10 +83,6 @@
                 <h1 class="page-header">Stress at Work Survey</h1>
                 <div class="col-lg-12">
 
-                    <div id="alert_admin_online" class="alert alert-danger">
-                        Please wait while Admin is doing some updates.
-                    </div>
-
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Location
@@ -101,359 +100,410 @@
                                             <label id="loc_msg" class="control-label" for="inputError"></label><!-- Please select your location. -->
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label>Work as:</label>
+                                        <select id="typework_id" class="form-control">
+                                            <option>None</option>
+                                            <option>Academician</option>
+                                            <option>Administration</option>
+                                            <option>Graduate Student Master/PhD</option>
+                                            <option>Intern</option>
+                                            <option>Research Assistant</option>
+                                        </select>
+                                        <div class="form-group has-error">
+                                            <label id="typework_msg" class="control-label" for="inputError"></label><!-- Please select your position at work. -->
+                                        </div>
+                                    </div>
+
                                 </div>
+
+                                <div class="col-lg-12">
+                                    <div class="panel panel-default">
+
+                                        <div class="panel-heading">
+                                            Experience
+                                        </div>
+                                        <div class="form-group has-error">
+                                            <label id="ex_msg" class="control-label" for="inputError"></label>
+                                        </div>
+                                        <!-- /.panel-heading -->
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label>My work involves various tasks.</label>
+                                                <select id="ex_q_1" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>I do the work I am trained for.</label>
+                                                <select id="ex_q_2" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.panel-body -->
+                                    </div>
+                                    <!-- /.panel -->
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Environmental Resources
+                                        </div>
+                                        <div class="form-group has-error">
+                                            <label id="er_msg" class="control-label" for="inputError"></label>
+                                        </div>
+                                        <!-- /.panel-heading -->
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label>I have positive working relationships with my co-worker.</label>
+                                                <select id="er_q_1" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>I can disagree with my manager or supervisor on work-related issues without fear of reprisal.</label>
+                                                <select id="er_q_2" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Overall, my organization treats me with respect.</label>
+                                                <select id="er_q_3" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.panel-body -->
+                                    </div>
+                                    <!-- /.panel -->
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Social Support
+                                        </div>
+                                        <div class="form-group has-error">
+                                            <label id="sc_msg" class="control-label" for="inputError"></label>
+                                        </div>
+                                        <!-- /.panel-heading -->
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label>We get on well with each other where I work.</label>
+                                                <select id="sc_q_1" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>My co-workers support me.</label>
+                                                <select id="sc_q_2" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.panel-body -->
+                                    </div>
+                                    <!-- /.panel -->
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Personality
+                                        </div>
+                                        <div class="form-group has-error">
+                                            <label id="py_msg" class="control-label" for="inputError"></label>
+                                        </div>
+                                        <!-- /.panel-heading -->
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label>I see myself as extraverted, enthusiastic.</label>
+                                                <select id="py_q_1" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>I see myself as critical, quarrelsome.</label>
+                                                <select id="py_q_2" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>I see myself as dependable, self-disciplined.</label>
+                                                <select id="py_q_3" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>I see myself as anxious, easily upset.</label>
+                                                <select id="py_q_4" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>I see myself as open to new experiences, complex.</label>
+                                                <select id="py_q_5" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>I see myself as reserved, quiet.</label>
+                                                <select id="py_q_6" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>I see myself as sympathetic, warm.</label>
+                                                <select id="py_q_7" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>I see myself as disorganized, careless.</label>
+                                                <select id="py_q_8" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>I see myself as calm, emotionally stable.</label>
+                                                <select id="py_q_9" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>I see myself as conventional, uncreative.</label>
+                                                <select id="py_q_10" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.panel-body -->
+                                    </div>
+                                    <!-- /.panel -->
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Time Pressure
+                                        </div>
+                                        <div class="form-group has-error">
+                                            <label id="tp_msg" class="control-label" for="inputError"></label>
+                                        </div>
+                                        <!-- /.panel-heading -->
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label>I rarely have enough time to finish tasks.</label>
+                                                <select id="tp_q_1" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>I often feel pressured to work overtime.</label>
+                                                <select id="tp_q_2" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>I often have enough time to do everything.</label>
+                                                <select id="tp_q_3" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.panel-body -->
+                                    </div>
+                                    <!-- /.panel -->
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Ability
+                                        </div>
+                                        <div class="form-group has-error">
+                                            <label id="ab_msg" class="control-label" for="inputError"></label>
+                                        </div>
+                                        <!-- /.panel-heading -->
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label>I have adequate control or input over my work duties.</label>
+                                                <select id="ab_q_1" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>I am able to utilize my skills and talents to the fullest extent at work.</label>
+                                                <select id="ab_q_2" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.panel-body -->
+                                    </div>
+                                    <!-- /.panel -->
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Job load
+                                        </div>
+                                        <div class="form-group has-error">
+                                            <label id="jl_msg" class="control-label" for="inputError"></label>
+                                        </div>
+                                        <!-- /.panel-heading -->
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label>Work overload.</label>
+                                                <select id="jl_q_1" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Excessive responsibilities of my position.</label>
+                                                <select id="jl_q_2" class="form-control">
+                                                    <option>None</option>
+                                                    <option>Strongly Disagree</option>
+                                                    <option>Disagree</option>
+                                                    <option>Neutral</option>
+                                                    <option>Agree</option>
+                                                    <option>Strongly Agree</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <!-- /.panel-body -->
+
+
+                                    </div>
+                                    <!-- /.panel -->
+
+
+                                    <button id="ques_submit" type="submit" class="btn btn-default">Submit</button>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-
-
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Stress at Work Survey
-                            </div>
-                            <!-- /.panel-heading -->
-                            <div class="panel-body">
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-pills">
-                                    <li class="active">
-                                        <a href="#ex-pills" data-toggle="tab">Experience
-                                            <div class="form-group has-error">
-                                                <label id="ex_msg" class="control-label" for="inputError"></label>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#er-pills" data-toggle="tab">Environmental Resources
-                                            <div class="form-group has-error">
-                                                <label id="er_msg" class="control-label" for="inputError"></label>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#sc-pills" data-toggle="tab">Social Support
-                                            <div class="form-group has-error">
-                                                <label id="sc_msg" class="control-label" for="inputError"></label>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#py-pills" data-toggle="tab">Personality
-                                            <div class="form-group has-error">
-                                                <label id="py_msg" class="control-label" for="inputError"></label>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#tp-pills" data-toggle="tab">Time Pressure
-                                            <div class="form-group has-error">
-                                                <label id="tp_msg" class="control-label" for="inputError"></label>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#ab-pills" data-toggle="tab">Ability
-                                            <div class="form-group has-error">
-                                                <label id="ab_msg" class="control-label" for="inputError"></label>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#jl-pills" data-toggle="tab">Job load
-                                            <div class="form-group has-error">
-                                                <label id="jl_msg" class="control-label" for="inputError"></label>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="ex-pills">
-                                        <div class="form-group">
-                                            <label>My work involves various tasks.</label>
-                                            <select id="ex_q_1" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>I do the work I am trained for.</label>
-                                            <select id="ex_q_2" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="er-pills">
-                                        <div class="form-group">
-                                            <label>I have positive working relationships with my co-worker.</label>
-                                            <select id="er_q_1" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>I can disagree with my manager or supervisor on work-related issues without fear of reprisal.</label>
-                                            <select id="er_q_2" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Overall, my organization treats me with respect.</label>
-                                            <select id="er_q_3" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="sc-pills">
-                                        <div class="form-group">
-                                            <label>We get on well with each other where I work.</label>
-                                            <select id="sc_q_1" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>My co-workers support me.</label>
-                                            <select id="sc_q_2" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="py-pills">
-                                        <div class="form-group">
-                                            <label>I see myself as extraverted, enthusiastic.</label>
-                                            <select id="py_q_1" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>I see myself as critical, quarrelsome.</label>
-                                            <select id="py_q_2" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>I see myself as dependable, self-disciplined.</label>
-                                            <select id="py_q_3" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>I see myself as anxious, easily upset.</label>
-                                            <select id="py_q_4" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>I see myself as open to new experiences, complex.</label>
-                                            <select id="py_q_5" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>I see myself as reserved, quiet.</label>
-                                            <select id="py_q_6" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>I see myself as sympathetic, warm.</label>
-                                            <select id="py_q_7" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>I see myself as disorganized, careless.</label>
-                                            <select id="py_q_8" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>I see myself as calm, emotionally stable.</label>
-                                            <select id="py_q_9" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>I see myself as conventional, uncreative.</label>
-                                            <select id="py_q_10" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="tp-pills">
-                                        <div class="form-group">
-                                            <label>I rarely have enough time to finish tasks.</label>
-                                            <select id="tp_q_1" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>I often feel pressured to work overtime.</label>
-                                            <select id="tp_q_2" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>I often have enough time to do everything.</label>
-                                            <select id="tp_q_3" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="ab-pills">
-                                        <div class="form-group">
-                                            <label>I have adequate control or input over my work duties.</label>
-                                            <select id="ab_q_1" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>I am able to utilize my skills and talents to the fullest extent at work.</label>
-                                            <select id="ab_q_2" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="jl-pills">
-                                        <div class="form-group">
-                                            <label>Work overload.</label>
-                                            <select id="jl_q_1" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Excessive responsibilities of my position.</label>
-                                            <select id="jl_q_2" class="form-control">
-                                                <option>None</option>
-                                                <option>Strongly Disagree</option>
-                                                <option>Disagree</option>
-                                                <option>Neutral</option>
-                                                <option>Agree</option>
-                                                <option>Strongly Agree</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <button id="ques_submit" type="submit" class="btn btn-default">Submit</button>
-                            </div>
-                            <!-- /.panel-body -->
-                        </div>
-                </div>
-                <!-- /.col-lg-12 -->
 
             </div>
             <!-- /.row -->

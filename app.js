@@ -596,7 +596,7 @@ io.on('connection', function (socket) {
 
     });
 
-    socket.on('Longterm_node', function (La_string,Lp_string,Lv_string,Ls_string, Ex_string, Er_string, Sc_string, Py_string, Tp_string, Ab_string, Jl_string) {
+    socket.on('Longterm_node', function (La_string,Lp_string,Lv_string,Ls_string, Ex_string, Er_string, Sc_string, Py_string, Tp_string, Ab_string, Jl_string, TypeWorker) {
 
         socket.La_node = La_string;
         socket.Lp_node = Lp_string;
@@ -609,6 +609,7 @@ io.on('connection', function (socket) {
         socket.Tp_string = Tp_string;
         socket.Ab_string = Ab_string;
         socket.Jl_string = Jl_string;
+        socket.TypeWorker = TypeWorker;
 
         //console.log(socket.Ls_node+":"+socket.username);
         socket.broadcast.emit('La_node', {
@@ -632,6 +633,7 @@ io.on('connection', function (socket) {
         var newdata = ({
             agent:socket.username,  // re look on it !!! ==============================
             Date:Date(),
+            TypeWorker: socket.TypeWorker,
             La:socket.La_node,
             Lp:socket.Lp_node,
             Lv:socket.Lv_node,

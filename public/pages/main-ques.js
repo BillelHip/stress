@@ -29,6 +29,8 @@ $(function() {
 
         var loc_id = $('#loc_id').val();
 
+        var typework_id = $('#typework_id').val();
+
         var ex_q ;
         var er_q ;
         var sc_q ;
@@ -166,12 +168,28 @@ $(function() {
         }
 
 
-        if(loc_id != 'None' && ex_q == 'PASS' && er_q == 'PASS' && sc_q == 'PASS' && py_q == 'PASS' && tp_q == 'PASS' && ab_q == 'PASS' && jl_q == 'PASS'){
+        if(loc_id != 'None' && typework_id != 'None' && ex_q == 'PASS' && er_q == 'PASS' && sc_q == 'PASS' && py_q == 'PASS' && tp_q == 'PASS' && ab_q == 'PASS' && jl_q == 'PASS'){
             socket.emit("Loc_node" , loc_id);
+
+            if(typework_id == 'Academician'){
+                type_worker = 1;
+            }else if(typework_id == 'Administration'){
+                type_worker = 2;
+            }else if(typework_id == 'Graduate Student Master/PhD'){
+                type_worker = 3;
+            }else if(typework_id == 'Intern'){
+                type_worker = 4;
+            }else if(typework_id == 'Research Assistant<'){
+                type_worker = 5;
+            }
 
             //Ex_float,Er_float,Sc_float,Py_float,Tp_float,Ab_float,Jl_float;
             calculation();
         }else{
+            if(typework_id == 'None'){
+                //Please select your position at work.
+                $('[id$=typework_msg]').text("Please select your position at work.");
+            }
             if(loc_id == 'None'){
                 $('[id$=loc_msg]').text("Please select your location.");
             }
@@ -266,10 +284,12 @@ $(function() {
             //console.log(':D, I\'m done!');
             if((newLa != -1) && (newLp != -1) && (newLv != -1) && (newLs != -1)){
                 //console.log('Longterm_node, I\'m done!' + newLa +','+ newLp +','+ newLv +','+ newLs);
-                socket.emit("Longterm_node" ,newLa,newLp,newLv,newLs,Ex_float,Er_float,Sc_float,Py_float,Tp_float,Ab_float,Jl_float);
+                socket.emit("Longterm_node" ,newLa,newLp,newLv,newLs,Ex_float,Er_float,Sc_float,Py_float,Tp_float,Ab_float,Jl_float, type_worker);
                 //window.location.replace("index.html");
 
                     $('[id$=loc_msg]').text("");
+
+                    $('[id$=typework_msg]').text("");
 
                     $('[id$=ex_msg]').text("");
 
@@ -289,6 +309,7 @@ $(function() {
     }
     var ex = 0.1,er = 0.1,sc = 0.1,py = 0.1,tp = 0.9,ab = 0.1,jl = 0.9;
     var newLa = -1,newLp = -1,newLv = -1,newLs= -1;
+    var type_worker = 0;
     // For analysis part
     var Ex_float,Er_float,Sc_float,Py_float,Tp_float,Ab_float,Jl_float;
 

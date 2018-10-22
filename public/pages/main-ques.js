@@ -12,6 +12,11 @@ $(function() {
             //calculation();
             socket.emit('add user',"");
             $( "#alert_admin_online" ).hide();
+
+
+            $("#successfully_msg").hide();
+            $("#complete_msg").hide();
+
             //socket.emit("admin_online");
 
             //update_loc_for_spinners
@@ -214,6 +219,9 @@ $(function() {
             if(jl_q == 'None'){
                 $('[id$=jl_msg]').text("Please select.");
             }
+
+            $("#successfully_msg").hide();
+            $("#complete_msg").show();
         }
 
     });
@@ -304,6 +312,51 @@ $(function() {
                     $('[id$=ab_msg]').text("");
 
                     $('[id$=jl_msg]').text("");
+
+
+                $("#successfully_msg").show();
+                $("#complete_msg").hide();
+
+                document.getElementById("loc_id").selectedIndex = "0";
+                document.getElementById("typework_id").selectedIndex = "0";
+
+                //ex_q_1 2
+                document.getElementById("ex_q_1").selectedIndex = "0";
+                document.getElementById("ex_q_2").selectedIndex = "0";
+
+                //er_q_1 3
+                document.getElementById("er_q_1").selectedIndex = "0";
+                document.getElementById("er_q_2").selectedIndex = "0";
+                document.getElementById("er_q_3").selectedIndex = "0";
+
+                //sc_q_1 2
+                document.getElementById("sc_q_1").selectedIndex = "0";
+                document.getElementById("sc_q_2").selectedIndex = "0";
+
+                //py_q_1 10
+                document.getElementById("py_q_1").selectedIndex = "0";
+                document.getElementById("py_q_2").selectedIndex = "0";
+                document.getElementById("py_q_3").selectedIndex = "0";
+                document.getElementById("py_q_4").selectedIndex = "0";
+                document.getElementById("py_q_5").selectedIndex = "0";
+                document.getElementById("py_q_6").selectedIndex = "0";
+                document.getElementById("py_q_7").selectedIndex = "0";
+                document.getElementById("py_q_8").selectedIndex = "0";
+                document.getElementById("py_q_9").selectedIndex = "0";
+                document.getElementById("py_q_10").selectedIndex = "0";
+
+                //tp_q_1 3
+                document.getElementById("tp_q_1").selectedIndex = "0";
+                document.getElementById("tp_q_2").selectedIndex = "0";
+                document.getElementById("tp_q_3").selectedIndex = "0";
+
+                //ab_q_1 2
+                document.getElementById("ab_q_1").selectedIndex = "0";
+                document.getElementById("ab_q_2").selectedIndex = "0";
+
+                //ab_q_1 2
+                document.getElementById("jl_q_1").selectedIndex = "0";
+                document.getElementById("jl_q_2").selectedIndex = "0";
             }
         });
     }

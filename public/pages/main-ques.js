@@ -100,7 +100,16 @@ $(function() {
         var py_q_9 = $('#py_q_9').val();
         var py_q_10 = $('#py_q_10').val();
 
+        //py_e_1,py_e_2,py_a_1,py_a_2,py_c_1,py_c_2,py_n_1,py_n_2,py_o_1,py_o_2;
+
         if(py_q_1 != 'None' && py_q_2 != 'None' && py_q_3 != 'None' && py_q_4 != 'None' && py_q_5 != 'None' && py_q_6 != 'None' && py_q_7 != 'None' && py_q_8 != 'None' && py_q_9 != 'None' && py_q_10 != 'None'){
+
+
+            py_e_1 = ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_1)) + 0.7 * parseFloat(give_me_float_from_string_neg(py_q_6)));
+            py_a_1 = ((1 - 0.7) * parseFloat(give_me_float_from_string_neg(py_q_2)) + 0.7 * parseFloat(give_me_float_from_string(py_q_7)));
+            py_c_1 = ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_3)) + 0.7 * parseFloat(give_me_float_from_string_neg(py_q_8)));
+            py_n_1 = ((1 - 0.7) * parseFloat(give_me_float_from_string_neg(py_q_4)) + 0.7 * parseFloat(give_me_float_from_string(py_q_9)));
+            py_o_1 = ((1 - 0.7) * parseFloat(give_me_float_from_string(py_q_5)) + 0.7 * parseFloat(give_me_float_from_string_neg(py_q_10)));
 
 
             Py_float = (
@@ -292,7 +301,7 @@ $(function() {
             //console.log(':D, I\'m done!');
             if((newLa != -1) && (newLp != -1) && (newLv != -1) && (newLs != -1)){
                 //console.log('Longterm_node, I\'m done!' + newLa +','+ newLp +','+ newLv +','+ newLs);
-                socket.emit("Longterm_node" ,newLa,newLp,newLv,newLs,Ex_float,Er_float,Sc_float,Py_float,Tp_float,Ab_float,Jl_float, type_worker);
+                socket.emit("Longterm_node" ,newLa,newLp,newLv,newLs,Ex_float,Er_float,Sc_float,Py_float,Tp_float,Ab_float,Jl_float, type_worker, py_e_1,py_a_1,py_c_1,py_n_1,py_o_1);
                 //window.location.replace("index.html");
 
                     $('[id$=loc_msg]').text("");
@@ -365,6 +374,8 @@ $(function() {
     var type_worker = 0;
     // For analysis part
     var Ex_float,Er_float,Sc_float,Py_float,Tp_float,Ab_float,Jl_float;
+
+    var py_e_1 = 0 ,py_e_2,py_a_1 = 0,py_a_2,py_c_1 = 0 ,py_c_2,py_n_1 = 0 ,py_n_2,py_o_1 = 0 ,py_o_2;
 
     function cala(_callback) {
 

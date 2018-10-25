@@ -596,7 +596,7 @@ io.on('connection', function (socket) {
 
     });
 
-    socket.on('Longterm_node', function (La_string,Lp_string,Lv_string,Ls_string, Ex_string, Er_string, Sc_string, Py_string, Tp_string, Ab_string, Jl_string, TypeWorker) {
+    socket.on('Longterm_node', function (La_string,Lp_string,Lv_string,Ls_string, Ex_string, Er_string, Sc_string, Py_string, Tp_string, Ab_string, Jl_string, TypeWorker,py_e_1,py_a_1,py_c_1,py_n_1,py_o_1) {
 
         socket.La_node = La_string;
         socket.Lp_node = Lp_string;
@@ -610,6 +610,19 @@ io.on('connection', function (socket) {
         socket.Ab_string = Ab_string;
         socket.Jl_string = Jl_string;
         socket.TypeWorker = TypeWorker;
+
+        //py_e_1,py_e_2,py_a_1,py_a_2,py_c_1,py_c_2,py_n_1,py_n_2,py_o_1,py_o_2;
+        socket.py_e_1  = py_e_1;
+
+        socket.py_a_1  = py_a_1;
+
+        socket.py_c_1  = py_c_1;
+
+        socket.py_n_1  = py_n_1;
+
+        socket.py_o_1  = py_o_1;
+
+
 
         //console.log(socket.Ls_node+":"+socket.username);
         socket.broadcast.emit('La_node', {
@@ -644,7 +657,18 @@ io.on('connection', function (socket) {
             Py:socket.Py_string,
             Tp:socket.Tp_string,
             Ab:socket.Ab_string,
-            Jl:socket.Jl_string
+            Jl:socket.Jl_string,
+
+            py_e_1:socket.py_e_1,
+
+            py_a_1:socket.py_a_1,
+
+            py_c_1:socket.py_c_1,
+
+            py_n_1:socket.py_n_1,
+
+            py_o_1:socket.py_o_1
+
         });
         main_obj_all = obj_all;
         for (var main_key in main_obj_all) {

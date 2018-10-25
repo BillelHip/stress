@@ -135,6 +135,7 @@
 
                     <!-- =================================================================================== -->
 
+
                     <div class="col-lg-6">
                         <div class="panel panel-default">
                             <div id="name-based-on_loc" class="panel-heading">
@@ -142,9 +143,15 @@
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                                <div class="flot-chart">
-                                    <div class="flot-chart-content" id="flot-pie-chart-based-on_loc"></div>
+                                <div class="form-group">
+                                    <center>
+                                    <img src="86100-200.png"  class="img-responsive">
+                                    <h2>
+                                        <p id="stress_id_avg" class="text-danger">  The average of stress at workplace: % </p>
+                                    </h2>
+                                    </center>
                                 </div>
+
                             </div>
                             <!-- /.panel-body -->
                         </div>
@@ -152,6 +159,42 @@
                     </div>
 
                     <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div id="name-based-on_loc_2" class="panel-heading">
+
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <center>
+                                    <img src="706144-200.png"  class="img-responsive">
+                                    <h2>
+                                        <p id="overload_id_avg" class="text-warning"> The average of work overload at workplace: % </p>
+                                    </h2>
+                                    </center>
+                                </div>
+
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
+
+                    <!--
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="flot-chart">
+                                        <div class="flot-chart-content" id="flot-pie-chart-based-on_loc"></div>
+                                    </div>
+                                </div>
+                           v>
+                            <!-- /.panel
+                        </div>
+                    -->
+
+                    <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 The Organizational Stress and Social Support
@@ -181,6 +224,21 @@
                         </div>
                         <!-- /.panel -->
                     </div>
+
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Overall Personality
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div id="py-bar-chart"></div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
 
                     <div class="col-lg-6">
                         <div class="panel panel-default">
@@ -260,6 +318,10 @@
 <script src="../vendor/flot/jquery.flot.resize.js"></script>
 <script src="../vendor/flot/jquery.flot.time.js"></script>
 <script src="../vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+
+
+<script src="../vendor/raphael/raphael.min.js"></script>
+<script src="../vendor/morrisjs/morris.min.js"></script>
 
 <!-- IO -->
 <script src="/socket.io/socket.io.js"></script>
@@ -497,7 +559,11 @@
             //console.log( "success : " +type_worker );
 
             var loc_id = $('#loc_id').val();
-            $('#name-based-on_loc').text('Location '+loc_id);
+            $('#name-based-on_loc').text('Stress at '+loc_id);
+            //name-based-on_loc_2
+            $('#name-based-on_loc_2').text('Work Overload at '+loc_id);
+
+
 
             $.getJSON("temp_file.json", function(data) {
                 //console.log( "success" );
@@ -519,6 +585,10 @@
 
                     // ==================== Get Avg
                     var avg_la = [],avg_lp = [],avg_lv = [],avg_ls = [];
+
+                    // for py chart bar
+                    var py_e = [],py_a = [],py_c = [],py_o = [],py_n = [];
+
                     var obj_all = data_temp;
                     var main_obj_all = obj_all;
                     var loc_i = 0;
@@ -534,6 +604,9 @@
                     //For insilt 3D plot
                     iAgent = 1;
                     OneByOneAgent = [];
+
+                    // for py bar
+                    var py_data = [];
 
                     for (var main_key in main_obj_all) {
                         if (main_obj_all.hasOwnProperty(main_key)) {
@@ -609,6 +682,57 @@
                                                 avg = sum / length_array;
                                                 avg_ls[loc_i] = avg;
                                                 //console.log('loc' + loc_i + 'Ls avg: ' + avg);
+
+
+                                                // py chart bar  'py_data'
+                                                //'Openness to experience','Conscientiousness','Extraversion','Agreeableness','Neuroticism'
+
+                                                // AVG py==============================================
+                                                var sum1 = 0,sum2 = 0,sum3 = 0,sum4 = 0,sum5 = 0;
+                                                for (var i = 0; i < length_array; i++) {
+                                                    sum1 += obj_all_[key_][i].py_e_1; //don't forget to add the base
+                                                    sum2 += obj_all_[key_][i].py_a_1;
+                                                    sum3 += obj_all_[key_][i].py_c_1;
+                                                    sum4 += obj_all_[key_][i].py_n_1;
+                                                    sum5 += obj_all_[key_][i].py_o_1;
+
+                                                }
+                                                avg = sum5 / length_array;
+                                                py_o[loc_i] = avg;
+
+                                                avg = sum3 / length_array;
+                                                py_c[loc_i] = avg;
+
+                                                avg = sum1 / length_array;
+                                                py_e[loc_i] = avg;
+
+                                                avg = sum2 / length_array;
+                                                py_a[loc_i] = avg;
+
+                                                avg = sum4 / length_array;
+                                                py_n[loc_i] = avg;
+
+
+                                                py_data.push({
+                                                    y: 'Openness to experience',
+                                                    a: Number.parseFloat(py_o[loc_i] * 100).toFixed(2)
+                                                });
+                                                py_data.push({
+                                                    y: 'Conscientiousness',
+                                                    a: Number.parseFloat(py_c[loc_i] * 100).toFixed(2)
+                                                });
+                                                py_data.push({
+                                                    y: 'Extraversion',
+                                                    a: Number.parseFloat(py_e[loc_i] * 100).toFixed(2)
+                                                });
+                                                py_data.push({
+                                                    y: 'Agreeableness',
+                                                    a: Number.parseFloat(py_a[loc_i] * 100).toFixed(2)
+                                                });
+                                                py_data.push({
+                                                    y: 'Neuroticism',
+                                                    a: Number.parseFloat(py_n[loc_i] * 100).toFixed(2)
+                                                });
 
                                             }else {
 
@@ -712,6 +836,24 @@
                             }
                         }
                     }
+
+
+                    // py chart bar 'Openness to experience','Conscientiousness','Extraversion','Agreeableness','Neuroticism'
+                    Morris.Bar({
+                        element: 'py-bar-chart',
+                        data: py_data,
+                        xkey: 'y',
+                        ykeys: ['a'],
+                        labels: ['avg'],
+                        hideHover: 'auto',
+                        resize: true
+                    });
+
+
+                    //stress_id_avg
+                    $('#stress_id_avg').text('The average of stress at workplace: '+avg_ls+'%');
+                    //overload_id_avg
+                    $('#overload_id_avg').text('The average of work overload at workplace: '+avg_lv+'%');
 
                     // For 3D plot
 

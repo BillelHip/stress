@@ -596,7 +596,7 @@ io.on('connection', function (socket) {
 
     });
 
-    socket.on('Longterm_node', function (La_string,Lp_string,Lv_string,Ls_string, Ex_string, Er_string, Sc_string, Py_string, Tp_string, Ab_string, Jl_string, TypeWorker,py_e_1,py_a_1,py_c_1,py_n_1,py_o_1) {
+    socket.on('Longterm_node', function (La_string,Lp_string,Lv_string,Ls_string, Ex_string, Er_string, Sc_string, Py_string, Tp_string, Ab_string, Jl_string, TypeWorker,py_e_1,py_a_1,py_c_1,py_n_1,py_o_1,pr_,sc_) {
 
         socket.La_node = La_string;
         socket.Lp_node = Lp_string;
@@ -621,6 +621,13 @@ io.on('connection', function (socket) {
         socket.py_n_1  = py_n_1;
 
         socket.py_o_1  = py_o_1;
+
+
+        //For pr
+        socket.pr_ = pr_;
+
+        //For sc
+        socket.sc_ = sc_;
 
 
 
@@ -667,7 +674,11 @@ io.on('connection', function (socket) {
 
             py_n_1:socket.py_n_1,
 
-            py_o_1:socket.py_o_1
+            py_o_1:socket.py_o_1,
+
+            pr_:socket.pr_,
+
+            sc_:socket.sc_
 
         });
         main_obj_all = obj_all;

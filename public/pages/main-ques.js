@@ -83,6 +83,8 @@ $(function() {
             sc = (1 - 0.7) * parseFloat(give_me_float_from_string(sc_q_1)) + 0.7 * parseFloat(give_me_float_from_string(sc_q_2));
             Sc_float = (1 - 0.7) * parseFloat(give_me_float_from_string(sc_q_1)) + 0.7 * parseFloat(give_me_float_from_string(sc_q_2));
 
+            sc_ = (1 - 0.7) * parseFloat(give_me_float_from_string(sc_q_1)) + 0.7 * parseFloat(give_me_float_from_string(sc_q_2));
+
             sc_q = 'PASS';
 
         }else{
@@ -301,7 +303,7 @@ $(function() {
             //console.log(':D, I\'m done!');
             if((newLa != -1) && (newLp != -1) && (newLv != -1) && (newLs != -1)){
                 //console.log('Longterm_node, I\'m done!' + newLa +','+ newLp +','+ newLv +','+ newLs);
-                socket.emit("Longterm_node" ,newLa,newLp,newLv,newLs,Ex_float,Er_float,Sc_float,Py_float,Tp_float,Ab_float,Jl_float, type_worker, py_e_1,py_a_1,py_c_1,py_n_1,py_o_1);
+                socket.emit("Longterm_node" ,newLa,newLp,newLv,newLs,Ex_float,Er_float,Sc_float,Py_float,Tp_float,Ab_float,Jl_float, type_worker, py_e_1,py_a_1,py_c_1,py_n_1,py_o_1, pr_, sc_);
                 //window.location.replace("index.html");
 
                     $('[id$=loc_msg]').text("");
@@ -377,6 +379,8 @@ $(function() {
 
     var py_e_1 = 0 ,py_e_2,py_a_1 = 0,py_a_2,py_c_1 = 0 ,py_c_2,py_n_1 = 0 ,py_n_2,py_o_1 = 0 ,py_o_2;
 
+    var pr_ = 0, sc_ = 0;
+
     function cala(_callback) {
 
         time = 1000;
@@ -428,7 +432,7 @@ $(function() {
             nLv =  Cu_nLv;
             nLs =  Cu_nLs;
             delT = CuDalt;
-            console.log(' joined --- Yes they take value'+Cu_nLa+','+Cu_nLp+','+Cu_nLv+','+Cu_nLs+','+CuDalt);
+            //console.log(' joined --- Yes they take value'+Cu_nLa+','+Cu_nLp+','+Cu_nLv+','+Cu_nLs+','+CuDalt);
         }else{
             nLs =  0.3;
             nLa =  0.3;
@@ -481,6 +485,7 @@ $(function() {
 
         Pr[1] = bPr * Sr[1] + (1-bPr) * Tc[1];
 
+
         Jl[1] = aJl * Jlbasic[1] + (1-aJl) * Lv[1];
 
         Jc[1] = (yJc * Ex[1] + (1-yJc) * Py[1]) * (1-Ls[1]);
@@ -506,6 +511,9 @@ $(function() {
             Sr[t] = wSr1 * Py[t] + wSr2 * Er[t] + wSr3 * Sc[t];
 
             Pr[t] = bPr * Sr[t] + (1-bPr) * Tc[t];
+
+            //For Pr
+            pr_ = Pr[t];
 
             Jl[t] = aJl * Jlbasic[t-1] + (1-aJl) * Lv[t-1];
 
@@ -565,7 +573,7 @@ $(function() {
     });
 
     socket.on('disconnect', function () {
-        console.log('you have been disconnected');
+        //console.log('you have been disconnected');
     });
 
     socket.on('reconnect', function () {
@@ -592,7 +600,7 @@ $(function() {
             $( "#ques_submit" ).show();
 
         }
-        console.log('admin_online'+data.isAdminOnline);
+        //console.log('admin_online'+data.isAdminOnline);
     });
 
 

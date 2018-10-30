@@ -277,7 +277,7 @@
                                             }
                                             avg = sum / length_array;
                                             avg_ls[loc_i] = avg;
-                                            console.log('loc' + loc_i + 'Ls avg: ' + avg);
+                                            //console.log('loc' + loc_i + 'Ls avg: ' + avg);
                                         // length if end -----
                                     } else if (length_array == 0) {
                                         avg_la[loc_i] = 0;
@@ -288,10 +288,10 @@
 
                                 xdata.push({
                                     y: key_,
-                                    a: Number.parseFloat(avg_ls[loc_i] * 100).toFixed(2),
-                                    z: Number.parseFloat(avg_lv[loc_i] * 100).toFixed(2),
-                                    b: Number.parseFloat(avg_la[loc_i] * 100).toFixed(2),
-                                    c: Number.parseFloat(avg_lp[loc_i] * 100).toFixed(2)
+                                    a: Number.parseFloat(avg_ls[loc_i]).toFixed(2),
+                                    z: Number.parseFloat(avg_lv[loc_i]).toFixed(2),
+                                    b: Number.parseFloat(avg_la[loc_i]).toFixed(2),
+                                    c: Number.parseFloat(avg_lp[loc_i]).toFixed(2)
                                 });
 
                                 loc_i++;
@@ -308,7 +308,7 @@
                     data: xdata,
                     xkey: 'y',
                     ykeys: ['a'],
-                    labels: ['Average Stress'],
+                    labels: ['Stress Level'],
                     hideHover: 'auto',
                     resize: true
                 });

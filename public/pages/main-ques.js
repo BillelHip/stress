@@ -195,7 +195,7 @@ $(function() {
                 type_worker = 3;
             }else if(typework_id == 'Intern'){
                 type_worker = 4;
-            }else if(typework_id == 'Research Assistant<'){
+            }else if(typework_id == 'Research Assistant'){
                 type_worker = 5;
             }
 

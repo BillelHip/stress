@@ -399,15 +399,15 @@ io.on('connection', function (socket) {
      });
 */
     socket.on('temp_state_first', function (loc_id) {
-        //console.log(" loc_id -> " + loc_id);
+        console.log(" loc_id -> " + loc_id);
         main_obj_all = obj_all;var loc_i = 0;
         for (var main_key in main_obj_all) {
             if (main_obj_all.hasOwnProperty(main_key)) {
                 obj_all_ = main_obj_all[main_key];
-                //console.log(" -> " + obj_all_);
+                console.log(" -> " + obj_all_);
                 for (var key_ in obj_all_) {
                     if (obj_all_.hasOwnProperty(key_)) {
-                        //console.log(key_ + " length -> " + obj_all_[key_]);
+                        console.log(key_ + " length -> " + obj_all_[key_]);
                         length_array = obj_all_[key_].length;
 
 

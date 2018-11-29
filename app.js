@@ -398,12 +398,59 @@ io.on('connection', function (socket) {
      ls_state_: socket.ls_state_
      });
 */
-    socket.on('temp_state_first', function () {
+    socket.on('temp_state_first', function (loc_id) {
+        //console.log(" loc_id -> " + loc_id);
+        main_obj_all = obj_all;var loc_i = 0;
+        for (var main_key in main_obj_all) {
+            if (main_obj_all.hasOwnProperty(main_key)) {
+                obj_all_ = main_obj_all[main_key];
+                //console.log(" -> " + obj_all_);
+                for (var key_ in obj_all_) {
+                    if (obj_all_.hasOwnProperty(key_)) {
+                        //console.log(key_ + " length -> " + obj_all_[key_]);
+                        length_array = obj_all_[key_].length;
+
+
+                        loc_max[loc_i] = [avg_la[loc_i],avg_lp[loc_i],avg_lv[loc_i],avg_ls[loc_i]];
+                        if(loc_id == key_){
+
+                            var la_st = "0",lp_st = "0",lv_st = "0",ls_st = "0";
+                            if(indexOfMax(loc_max[loc_i]) == 0){
+                                la_st = "1";
+                            }else if(indexOfMax(loc_max[loc_i]) == 1){
+                                lp_st = "1";
+                            }else if(indexOfMax(loc_max[loc_i]) == 2){
+                                lv_st = "1";
+                            }else if(indexOfMax(loc_max[loc_i]) == 3){
+                                ls_st = "1";
+                            }
+                            //console.log(socket.Loc_node+' loc ====== : ' +loc_max[key_i][0] + loc_max[key_i][1]+loc_max[key_i][2]+loc_max[key_i][3]);
+
+                            socket.loc_state = key_;
+                            socket.la_state_ = la_st;
+                            socket.lp_state_ = lp_st;
+                            socket.lv_state_ = lv_st;
+                            socket.ls_state_ = ls_st;
+                            socket.emit('temp_state', {
+                                loc_state: socket.loc_state,
+                                la_state_: socket.la_state_,
+                                lp_state_: socket.lp_state_,
+                                lv_state_: socket.lv_state_,
+                                ls_state_: socket.ls_state_
+                            });
+                        }
+                    }
+                    loc_i++;
+                }
+            }
+        }
+
+        /*
         //la_state
         //console.log("temp_state");
         var loc_state = 0;
         if(loc_state == 0){
-            //console.log("temp_state");
+            console.log("temp_state");
             var la_st = "0",lp_st = "0",lv_st = "0",ls_st = "0";
             if(indexOfMax(loc1_max) == 0){
                 la_st = "1";
@@ -414,11 +461,13 @@ io.on('connection', function (socket) {
             }else if(indexOfMax(loc1_max) == 3){
                 ls_st = "1";
             }
+            socket.loc_state = key_;
             socket.la_state_ = la_st;
             socket.lp_state_ = lp_st;
             socket.lv_state_ = lv_st;
             socket.ls_state_ = ls_st;
-            socket.broadcast.emit('temp_state', {
+            socket.emit('temp_state', {
+                loc_state: socket.loc_state,
                 la_state_: socket.la_state_,
                 lp_state_: socket.lp_state_,
                 lv_state_: socket.lv_state_,
@@ -436,11 +485,13 @@ io.on('connection', function (socket) {
             }else if(indexOfMax(loc2_max) == 3){
                 ls_st = "1";
             }
+            socket.loc_state = key_;
             socket.la_state_ = la_st;
             socket.lp_state_ = lp_st;
             socket.lv_state_ = lv_st;
             socket.ls_state_ = ls_st;
-            socket.broadcast.emit('temp_state', {
+            socket.emit('temp_state', {
+                loc_state: socket.loc_state,
                 la_state_: socket.la_state_,
                 lp_state_: socket.lp_state_,
                 lv_state_: socket.lv_state_,
@@ -457,11 +508,13 @@ io.on('connection', function (socket) {
             }else if(indexOfMax(loc3_max) == 3){
                 ls_st = "1";
             }
+            socket.loc_state = key_;
             socket.la_state_ = la_st;
             socket.lp_state_ = lp_st;
             socket.lv_state_ = lv_st;
             socket.ls_state_ = ls_st;
-            socket.broadcast.emit('temp_state', {
+            socket.emit('temp_state', {
+                loc_state: socket.loc_state,
                 la_state_: socket.la_state_,
                 lp_state_: socket.lp_state_,
                 lv_state_: socket.lv_state_,
@@ -478,17 +531,20 @@ io.on('connection', function (socket) {
             }else if(indexOfMax(loc4_max) == 3){
                 ls_st = "1";
             }
+            socket.loc_state = key_;
             socket.la_state_ = la_st;
             socket.lp_state_ = lp_st;
             socket.lv_state_ = lv_st;
             socket.ls_state_ = ls_st;
-            socket.broadcast.emit('temp_state', {
+            socket.emit('temp_state', {
+                loc_state: socket.loc_state,
                 la_state_: socket.la_state_,
                 lp_state_: socket.lp_state_,
                 lv_state_: socket.lv_state_,
                 ls_state_: socket.ls_state_
             });
         }
+        */
     });
 
     socket.on('get_locations_name', function () {
@@ -939,7 +995,7 @@ io.on('connection', function (socket) {
                                 socket.lp_state_ = lp_st;
                                 socket.lv_state_ = lv_st;
                                 socket.ls_state_ = ls_st;
-                                socket.broadcast.emit('temp_state', {
+                                socket.emit('temp_state', {
                                     loc_state: socket.loc_state,
                                     la_state_: socket.la_state_,
                                     lp_state_: socket.lp_state_,
